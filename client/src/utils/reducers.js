@@ -28,7 +28,6 @@ export const reducer = (state, action) => {
         categories: [...action.categories]
       }
     case UPDATE_CURRENT_CATEGORY:
-      console.log(action.currentCategory);
       return {
         ...state,
         currentCategory: action.currentCategory
