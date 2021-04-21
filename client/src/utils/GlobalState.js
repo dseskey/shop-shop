@@ -1,25 +1,15 @@
-import React, { createContext, useContext } from "react";
-import { useProductReducer } from './reducers';
+import { reducer } from './reducers';
 
-const StoreContext = createContext();
-const { Provider } = StoreContext;
+/*--Redux imports--*/
+import { configureStore } from '@reduxjs/toolkit'
 
-const StoreProvider = ({ value = [], ...props }) => {
-    const [state, dispatch] = useProductReducer({
-        products: [],
-        cart:[],
-        cartOpen: false,
-        categories: [],
-        currentCategory: '',
-    });
-    // use this to confirm it works!
-    console.log(state);
-    return <Provider value={[state, dispatch]} {...props} />;
-};
+const store = configureStore({ reducer: reducer, preloadedState: {
+    products: [],
+    cart:[],
+    cartOpen: false,
+    categories: [],
+    currentCategory: '',
+} 
+});
 
-//Custom react hook!
-const useStoreContext = () => {
-    return useContext(StoreContext);
-};
-
-export { StoreProvider, useStoreContext };
+export default store;
