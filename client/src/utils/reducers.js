@@ -54,16 +54,23 @@ export const reducer = (state, action) => {
         cart: newState
       };
     case UPDATE_CART_QUANTITY:
-      return {
-        ...state,
-        cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity;
+    /*--Code does not work from the previous create Context API as the statement
+    inside the IF statement forces redux to throw an error as it thinks we are trying to update old state
+    To fix this, when we find the product we want to update in the cart, we return a new modified object. For the other products, we just return the same object--*/
+    return {
+      ...state,
+      cartOpen: true,
+      cart: state.cart.map(product => {
+        if (action._id === product._id) {
+          return {
+            ...product,
+            purchaseQuantity: action.purchaseQuantity
           }
-          return product;
-        })
-      };
+        }
+        return product;
+      })
+    };
+
     case CLEAR_CART:
       return {
         ...state,
