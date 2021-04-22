@@ -9,8 +9,6 @@ const Home = () => {
       <CategoryMenu />
       <ProductList />
       <Cart/>
-      
-       HI
     </div>
   );
 };
