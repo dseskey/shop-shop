@@ -10,8 +10,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import OrderHistory from "./pages/OrderHistory";
-import { StoreProvider } from "./utils/GlobalState";
 import Success from './pages/Success';
+
+import { Provider as StoreProvider} from 'react-redux';
+import store from './utils/GlobalState';
 
 
 const client = new ApolloClient({
@@ -27,11 +29,12 @@ const client = new ApolloClient({
 })
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+          <StoreProvider store={store}>
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
