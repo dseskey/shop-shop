@@ -11,8 +11,6 @@ import {
   TOGGLE_CART
 } from './actions';
 
-const initialState = { value: 0 }
-
 export const reducer = (state, action) => {
   switch (action.type) {
     // if action type value is the value of `UPDATE_PRODUCTS`, return a new state object with an updated products array

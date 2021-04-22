@@ -1,15 +1,15 @@
 import { reducer } from './reducers';
 
 /*--Redux imports--*/
-import { configureStore } from '@reduxjs/toolkit'
+import { createStore } from 'redux';
 
-const store = configureStore({ reducer: reducer, preloadedState: {
+const store = createStore(reducer, {
     products: [],
-    cart:[],
+    cart: [],
     cartOpen: false,
     categories: [],
     currentCategory: '',
-} 
 });
+
 
 export default store;

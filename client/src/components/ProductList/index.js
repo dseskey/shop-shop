@@ -39,7 +39,7 @@ function ProductList() {
         });
       });
     }
-  }, [data, dispatch]);
+  }, [loading, data, dispatch]);
 
 function filterProducts() {
   if (!currentCategory) {
